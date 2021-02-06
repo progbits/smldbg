@@ -122,8 +122,8 @@ DwarfLocation DwarfLocationStackMachine::handle_reg_opcode(Opcode opcode) {
     return DwarfLocation{
         .base = DwarfLocationBase::Register,
         .register_index = op_to_int(opcode) - op_to_int(Opcode::DW_OP_reg0),
-        .offset = std::numeric_limits<decltype(DwarfLocation::offset)>::max(),
         .address = std::numeric_limits<decltype(DwarfLocation::offset)>::max(),
+        .offset = std::numeric_limits<decltype(DwarfLocation::offset)>::max(),
     };
 }
 
@@ -134,8 +134,8 @@ DwarfLocation DwarfLocationStackMachine::handle_breg_opcode(Opcode opcode,
     return DwarfLocation{
         .base = DwarfLocationBase::Register,
         .register_index = op_to_int(opcode) - op_to_int(Opcode::DW_OP_breg0),
-        .offset = offset,
         .address = std::numeric_limits<decltype(DwarfLocation::offset)>::max(),
+        .offset = offset,
     };
 }
 
