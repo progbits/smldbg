@@ -111,38 +111,39 @@ private:
     std::unordered_map<uint64_t, Breakpoint>
         m_breakpoints; // Map program counter values to breakpoints..
 
+    // Convenient mapping between hardware registers, dwarf register indexes and
+    // printable names.
     // Section 3.38
     // https://software.intel.com/sites/default/files/article/402129/mpx-linux64-abi.pdf
-    const std::array<RegisterDesc, 28> m_registers = {
-        {{HardwareRegister::r15, 15, "r15"},
-         {HardwareRegister::r14, 14, "r14"},
-         {HardwareRegister::r13, 13, "r13"},
-         {HardwareRegister::r12, 12, "r12"},
-         {HardwareRegister::rbp, 6, "rbp"},
-         {HardwareRegister::rbx, 3, "rbx"},
-         {HardwareRegister::r11, 11, "r11"},
-         {HardwareRegister::r10, 10, "r10"},
-         {HardwareRegister::r9, 9, "r9"},
-         {HardwareRegister::r8, 8, "r8"},
-         {HardwareRegister::rax, 0, "rax"},
-         {HardwareRegister::rcx, 2, "rcx"},
-         {HardwareRegister::rdx, 1, "rdx"},
-         {HardwareRegister::rsi, 4, "rsi"},
-         {HardwareRegister::rdi, 5, "rdi"},
-         {HardwareRegister::orig_rax, -1, "orig_rax"}, // Undef. in Dwarf Spec.
-         {HardwareRegister::rip, -1, "rip"},           // Undef. in Dwarf Spec.
-         {HardwareRegister::cs, 51, "cs"},
-         {HardwareRegister::eflags, 49, "eflags"},
-         {HardwareRegister::rsp, 7, "rsp"},
-         {HardwareRegister::ss, 52, "ss"},
-         {HardwareRegister::fs_base, 58, "fs_base"},
-         {HardwareRegister::gs_base, 59, "gs_base"},
-         {HardwareRegister::ds, 53, "ds"},
-         {HardwareRegister::es, 50, "es"},
-         {HardwareRegister::fs, 54, "fs"},
-         {HardwareRegister::gs, 55,
-          .name = "gs"}}}; // Convenient mapping between hardware registers,
-                           // dwarf register indexes and printable names.
+    const std::array<RegisterDesc, 28> m_registers = {{
+        {HardwareRegister::r15, 15, "r15"},
+        {HardwareRegister::r14, 14, "r14"},
+        {HardwareRegister::r13, 13, "r13"},
+        {HardwareRegister::r12, 12, "r12"},
+        {HardwareRegister::rbp, 6, "rbp"},
+        {HardwareRegister::rbx, 3, "rbx"},
+        {HardwareRegister::r11, 11, "r11"},
+        {HardwareRegister::r10, 10, "r10"},
+        {HardwareRegister::r9, 9, "r9"},
+        {HardwareRegister::r8, 8, "r8"},
+        {HardwareRegister::rax, 0, "rax"},
+        {HardwareRegister::rcx, 2, "rcx"},
+        {HardwareRegister::rdx, 1, "rdx"},
+        {HardwareRegister::rsi, 4, "rsi"},
+        {HardwareRegister::rdi, 5, "rdi"},
+        {HardwareRegister::orig_rax, -1, "orig_rax"}, // Undef. in Dwarf Spec.
+        {HardwareRegister::rip, -1, "rip"},           // Undef. in Dwarf Spec.
+        {HardwareRegister::cs, 51, "cs"},
+        {HardwareRegister::eflags, 49, "eflags"},
+        {HardwareRegister::rsp, 7, "rsp"},
+        {HardwareRegister::ss, 52, "ss"},
+        {HardwareRegister::fs_base, 58, "fs_base"},
+        {HardwareRegister::gs_base, 59, "gs_base"},
+        {HardwareRegister::ds, 53, "ds"},
+        {HardwareRegister::es, 50, "es"},
+        {HardwareRegister::fs, 54, "fs"},
+        {HardwareRegister::gs, 55, "gs"},
+    }};
 };
 
 } // namespace smldbg
